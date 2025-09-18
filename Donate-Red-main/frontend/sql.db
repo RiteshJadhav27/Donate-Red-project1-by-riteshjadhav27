@@ -1,0 +1,185 @@
+ ** Command for start the Database **
+ Command:
+    -- mysql -u root -p
+
+1️ Create a Database
+Command:
+    CREATE DATABASE blood_donation_db;
+
+2️ Use the Database
+Command:
+    USE blood_donation_db;
+
+3 To see all the tables in database 
+Command:
+    SHOW TABLES;
+
+4 All Tables in database 
++--------------------------+
+| Tables_in_blood_donation |
++--------------------------+
+| donor_eligibility        |
+| donors                   |
+| medical_info             |
+| users                    |
++--------------------------+
+
+
+
+5 Create a table in database 
+   1 - Create a Table for user Details
+    Command:
+        CREATE TABLE users (
+            id INT AUTO_INCREMENT PRIMARY KEY,
+            first_name VARCHAR(50) NOT NULL,
+            last_name VARCHAR(50) NOT NULL,
+            email VARCHAR(100) NOT NULL UNIQUE,
+            age INT NOT NULL,
+            phone VARCHAR(15) NOT NULL,
+            state VARCHAR(50) NOT NULL,
+            city VARCHAR(50) NOT NULL,
+            password VARCHAR(255) NOT NULL,
+            blood_type VARCHAR(5) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        );
+    
+    To see the tables attritube 
+    Command:
+        DESCRIBE users; //Add your table name 
+        +------------+--------------+------+-----+---------------------+----------------+
+| Field      | Type         | Null | Key | Default             | Extra          |
++------------+--------------+------+-----+---------------------+----------------+
+| id         | int(11)      | NO   | PRI | NULL                | auto_increment |
+| first_name | varchar(50)  | NO   |     | NULL                |                |
+| last_name  | varchar(50)  | NO   |     | NULL                |                |
+| email      | varchar(100) | NO   | UNI | NULL                |                |
+| age        | int(11)      | NO   |     | NULL                |                |
+| phone      | varchar(15)  | NO   |     | NULL                |                |
+| state      | varchar(50)  | NO   |     | NULL                |                |
+| city       | varchar(50)  | NO   |     | NULL                |                |
+| password   | varchar(255) | NO   |     | NULL                |                |
+| blood_type | varchar(5)   | NO   |     | NULL                |                |
+| created_at | timestamp    | NO   |     | current_timestamp() |                |
++------------+--------------+------+-----+---------------------+----------------+
+
+    2 - Create a Table for Donor Details
+        Command:
+            CREATE TABLE donors (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                first_name VARCHAR(50) NOT NULL,
+                last_name VARCHAR(50) NOT NULL,
+                email VARCHAR(100) UNIQUE NOT NULL,
+                phone VARCHAR(15) UNIQUE NOT NULL,
+                state VARCHAR(50) NOT NULL,
+                city VARCHAR(50) NOT NULL,
+                blood_type ENUM('A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-') NOT NULL,
+                role ENUM('donor', 'seeker') NOT NULL, -- donor (who donates), seeker (who is finding donor)
+                availability BOOLEAN DEFAULT 1,  -- 1 = Available for donation, 0 = Not available
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+    
+    -To see the tables attritube 
+    Command:
+        DESCRIBE donors; //Add your table name 
+
++--------------+-------------------------------------------------+------+-----+---------------------+----------------+
+| Field        | Type                                            | Null | Key | Default             | Extra          |
++--------------+-------------------------------------------------+------+-----+---------------------+----------------+
+| id           | int(11)                                         | NO   | PRI | NULL                | auto_increment |
+| first_name   | varchar(50)                                     | NO   |     | NULL                |                |
+| last_name    | varchar(50)                                     | NO   |     | NULL                |                |
+| email        | varchar(100)                                    | NO   | UNI | NULL                |                |
+| phone        | varchar(15)                                     | NO   | UNI | NULL                |                |
+| state        | varchar(50)                                     | NO   |     | NULL                |                |
+| city         | varchar(50)                                     | NO   |     | NULL                |                |
+| blood_type   | enum('A+','A-','B+','B-','AB+','AB-','O+','O-') | NO   |     | NULL                |                |
+| role         | enum('donor','seeker')                          | NO   |     | NULL                |                |
+| availability | tinyint(1)                                      | YES  |     | 1                   |                |
+| created_at   | timestamp                                       | NO   |     | current_timestamp() |                |
++--------------+-------------------------------------------------+------+-----+---------------------+----------------+
+
+    3 - Create table for donor eligibility
+        Command:
+            CREATE TABLE donor_eligibility (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                donor_email VARCHAR(255),  
+                first_time_donor ENUM('Yes', 'No') NOT NULL,
+                taking_medicine ENUM('Yes', 'No') NOT NULL,
+                last_donated ENUM('Yes', 'No') NOT NULL,
+                immunizations ENUM('Yes', 'No') NOT NULL,
+                malaria_treatment ENUM('Yes', 'No') NOT NULL,
+                received_blood ENUM('Yes', 'No') NOT NULL,
+                close_contact_jaundice ENUM('Yes', 'No') NOT NULL,
+                rabies_treatment ENUM('Yes', 'No') NOT NULL,
+                FOREIGN KEY (donor_email) REFERENCES donors(email) ON DELETE CASCADE
+            );
+
+    -To see the tables attritube 
+    Command:
+        DESCRIBE donor_eligibility; //Add your table name 
++------------------------+------------------+------+-----+---------+----------------+
+| Field                  | Type             | Null | Key | Default | Extra          |
++------------------------+------------------+------+-----+---------+----------------+
+| id                     | int(11)          | NO   | PRI | NULL    | auto_increment |
+| donor_email            | varchar(255)     | YES  | MUL | NULL    |                |
+| first_time_donor       | enum('Yes','No') | NO   |     | NULL    |                |
+| taking_medicine        | enum('Yes','No') | NO   |     | NULL    |                |
+| last_donated           | enum('Yes','No') | NO   |     | NULL    |                |
+| immunizations          | enum('Yes','No') | NO   |     | NULL    |                |
+| malaria_treatment      | enum('Yes','No') | NO   |     | NULL    |                |
+| received_blood         | enum('Yes','No') | NO   |     | NULL    |                |
+| close_contact_jaundice | enum('Yes','No') | NO   |     | NULL    |                |
+| rabies_treatment       | enum('Yes','No') | NO   |     | NULL    |                |
++------------------------+------------------+------+-----+---------+----------------+
+
+    4  - Create table for medical information
+        Command:
+            CREATE TABLE medical_info (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                donor_email VARCHAR(255),  
+                diabetes BOOLEAN DEFAULT FALSE,
+                cancer BOOLEAN DEFAULT FALSE,
+                tuberculosis BOOLEAN DEFAULT FALSE,
+                bronchial_asthma BOOLEAN DEFAULT FALSE,
+                liver_disease BOOLEAN DEFAULT FALSE,
+                kidney_disease BOOLEAN DEFAULT FALSE,
+                blood_clotting_problem BOOLEAN DEFAULT FALSE,
+                heart_disease BOOLEAN DEFAULT FALSE,
+                allergic_disorder BOOLEAN DEFAULT FALSE,
+                FOREIGN KEY (donor_email) REFERENCES donors(email) ON DELETE CASCADE
+            );
+
+    -To see the tables attritube 
+    Command:
+        DESCRIBE medical_info; //Add your table name 
++------------------------+--------------+------+-----+---------+----------------+
+| Field                  | Type         | Null | Key | Default | Extra          |
++------------------------+--------------+------+-----+---------+----------------+
+| id                     | int(11)      | NO   | PRI | NULL    | auto_increment |
+| donor_email            | varchar(255) | YES  | MUL | NULL    |                |
+| diabetes               | tinyint(1)   | YES  |     | 0       |                |
+| cancer                 | tinyint(1)   | YES  |     | 0       |                |
+| tuberculosis           | tinyint(1)   | YES  |     | 0       |                |
+| bronchial_asthma       | tinyint(1)   | YES  |     | 0       |                |
+| liver_disease          | tinyint(1)   | YES  |     | 0       |                |
+| kidney_disease         | tinyint(1)   | YES  |     | 0       |                |
+| blood_clotting_problem | tinyint(1)   | YES  |     | 0       |                |
+| heart_disease          | tinyint(1)   | YES  |     | 0       |                |
+| allergic_disorder      | tinyint(1)   | YES  |     | 0       |                |
++------------------------+--------------+------+-----+---------+----------------+
+
+6 Insert Data into the Table
+Command:
+    INSERT INTO donors (donartype, medicine, lastdonation, immunizations, Malaria, recieveblood, jaundice, Rabies) 
+    VALUES ('Yes', 'No', 'No', 'Yes', 'No', 'Yes', 'No', 'No');
+
+7 Fetch All Donors' Data
+Command:
+    SELECT * FROM table_Name; //add your table name 
+
+8 Fetch a Specific Donor's Data (Example: ID = 1)
+Command:
+    SELECT * FROM donors WHERE id = 1;
+
+
+

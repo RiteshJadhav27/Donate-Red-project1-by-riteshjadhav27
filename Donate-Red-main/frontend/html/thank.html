@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You</title>
+    <link rel="icon" type="image/x-icon" href="../Assets/favicon.ico">
+    <script src="../js/logCheck.js" defer></script>
+    <link rel="stylesheet" href="../Css/thank.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTE8GK19QM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WTE8GK19QM');
+</script>
+<body>
+    <header class="header">
+        <div class="div_header">
+          <div class="logo">
+            <img src="..\Assets\logo.png" alt="Donate Red" class="img" />
+          </div>
+          <div class="navbar" id="nav">
+            <ul class="navbar_list">
+              <li>
+                <a style=" color: white; text-decoration: none;" href='home.html'>Home</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none;" href='find.html'>Find Donor</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none; "href='aboutus.html'>About Us</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none;" href='blogs.html'>Blogs</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none; "href='check2.html'>Donate Blood</a>
+              </li>
+              
+            </ul>
+            <!-- <h4 id="userName" style="font-weight: bold; font-family: var(--ff-poppins); color: white; margin-left: 20px;">
+              FirstName Lastname
+            </h4> -->
+          </div>
+        </div>
+      </header>
+
+      <div style="display: flex;flex-direction: column;" class="main">
+        <div class="content">
+        <img class="envelope" src="../Assets/message.png" alt="">
+        <h1 class="thank">Thank You for Submitting</h1>
+       </div>
+       <button onclick="window.location.href = 'home.html'">Home</button>
+       <!-- <div class="imgg">
+        <img src="../Assets/donar.jpg" alt="" class="im">
+       </div> -->
+      </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          Swal.fire({
+            title: "Thank You for Donating!",
+            text: "You will receive updates via email or notification on your registered mobile number.",
+            icon: "success",
+            confirmButtonText: "OK"
+          });
+        });
+      </script>
+      
+</body>
+</html>

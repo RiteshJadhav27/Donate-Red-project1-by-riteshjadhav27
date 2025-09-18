@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Registration</title>
+  <link rel="icon" type="image/x-icon" href="../Assets/favicon.ico">
+  <link rel="stylesheet" href="..\Css\register.css">
+    <script src="../js/logCheck.js" defer></script>
+    <script src="../js/stateCity.js" defer></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTE8GK19QM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WTE8GK19QM');
+</script>
+<body>
+    <header class="header">
+        <div class="div_header">
+          <div class="logo">
+            <img src="..\Assets\logo.png" alt="Donate Red" class="img" />
+          </div>
+          <div class="navbar" id="nav">
+            <ul class="navbar_list">
+              <li>
+                <a style=" color: white; text-decoration: none;" href='./index.html'>Home</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none;" href='./index.html'>Find Donar</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none; "href='./aboutus.html'>About Us</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none;" href='./blogs.html'>Blogs</a>
+              </li>
+              <li>
+                <a style=" color: white; text-decoration: none; "href='./check2.html'>Donate Blood</a>
+              </li>
+            </ul>
+            <button id="headLoginButton" onclick="window.location.href=`/login`" style="color: white;" class="button">Login / Register</button>
+          </div>
+        </div>
+      </header>
+      <div class="register">
+        <form class="form" method="post" action="../Backend/register.php">
+            <p class="title">Register </p>
+            <!-- <p class="message"> Signup now  </p> -->
+                <div class="flex">
+                <label>
+                    <input name="firstname" required placeholder="" type="text" class="input">
+                    <span>Firstname</span>
+                </label>
+        
+                <label>
+                    <input name="lastname" required placeholder="" type="text" class="input">
+                    <span>Lastname</span>
+                </label>
+            </div>  
+                    
+            <label>
+                <input name="email"  placeholder="" type="email" class="input" required>
+                <span>Email</span>
+            </label>
+           
+              <label>
+                <input  placeholder="" type="number" name="age" id="age" min="18" max="70" class="input"  required />
+                <span>Age</span>
+              </label>
+              <label>
+                <input
+                  required=""
+                  placeholder="  "
+                  type="tel"
+                  class="input"
+                  id="phone"
+                  name="phone"
+                  required
+                />
+                <span>Phone</span>
+              </label> 
+              <label>
+                <select id="state" name="state" required>
+                  <option value="Select Your State">Select Your State</option>
+                  <option value="mh">Maharashtra</option>
+                  <option value="tn">Telangana</option>
+                  <option value="ga">Goa</option>
+                  <option value="kl">Kerala</option>
+                  <option value="gj">Gujrat</option>
+                </select>
+              </label>
+              <label>
+                <select id="city" name="city" required>
+                  <option value="Select Your City">Select Your City</option>
+                  <option value="nsk">Nashik</option>
+                  <option value="mb">Mumbai</option>
+                  <option value="pn">Pune</option>
+                  <option value="ng">Nagpur</option>
+                  <option value="th">Thane</option>
+                </select>
+              </label>
+                
+            <label>
+                <input name="password" required placeholder="" type="password" class="input">
+                <span>Password</span>
+            </label>
+            <label for="blood-type" name = "blood-type">
+              <select name="bloodGrp" id="blood-type" placeholder="Blood-Type" required>
+                <option value="Select Your Blood Type">Select Your Blood Type</option>
+                <option value="A+">A+</option>
+                <option value="A-">A-</option>
+                <option value="B+">B+</option>
+                <option value="B-">B-</option>
+                <option value="AB+">AB+</option>
+                <option value="AB-">AB-</option>
+                <option value="O+">O+</option>
+                <option value="O-">O-</option>
+              </select>
+            <button id="sub" class="submit">Submit</button>
+            <p class="signin">Already have an acount ? <a href="login.html">Signin</a> </p>
+        </form>
+      </div>
+</body>
+</html>

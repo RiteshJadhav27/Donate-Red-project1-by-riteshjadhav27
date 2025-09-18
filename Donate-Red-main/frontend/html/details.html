@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Home Page</title>
+  <link rel="icon" type="image/x-icon" href="../Assets/favicon.ico">
+  <link rel="stylesheet" href="..\Css\details.css" />
+  <script src="../js/logCheck.js" defer></script>
+  <script src="../js/details.js"></script>
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WTE8GK19QM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WTE8GK19QM');
+</script>
+<body>
+  <header class="header">
+    <div class="div_header">
+      <div class="logo">
+        <img src="..\Assets\logo.png" alt="Donate Red" class="img" />
+      </div>
+      <div class="navbar" id="nav">
+        <ul class="navbar_list">
+          <li>
+            <a style=" color: white; text-decoration: none;" href='home.html'>Home</a>
+          </li>
+          <li>
+            <a style=" color: white; text-decoration: none;" href='find.html'>Find Donor</a>
+          </li>
+          <li>
+            <a style=" color: white; text-decoration: none; "href='aboutus.html'>About Us</a>
+          </li>
+          <li>
+            <a style=" color: white; text-decoration: none;" href='blogs.html'>Blogs</a>
+          </li>
+          <li>
+            <a style=" color: white; text-decoration: none; "href='check2.html'>Donate Blood</a>
+          </li>
+          
+        </ul>
+        <!-- <h4 id="userName" style="font-weight: bold; font-family: var(--ff-poppins); color: white; margin-left: 20px;">
+          FirstName Lastname
+        </h4> -->
+      </div>
+    </div>
+  </header>
+  <div class="main">
+    <div class="aside">
+      <img class="user" src="..\Assets\user.jpg" alt="">
+      <h3 class="h3">Personal Details :-</h3>
+      <p class="adetails" > Name : <span id="name" class="format"></span></p>
+      <p class="adetails" > Contact no : <span id="phone"></span></p>
+      <p class="adetails" > E-Mail : <span id="email"></span> </p>
+      <p class="adetails" > Age : <span id="age"></span></p>
+      <p class="adetails" > Blood Group : <span id="bloodGrp" class="format"></span> </p>
+      <p class="adetails" >State : <span id="state" class="format"></span></p>
+      <p class="adetails" >City : <span id="city" class="format"></span></p>
+
+
+    </div>
+    <div class="content">
+      <h2 class="verify">Verify your Details</h2>
+      <h3 class="medi">Medical Details :- </h3>
+      <p class="mdetails">Are You First Time Donar? : <span id="firstdonar"></span></p>
+      <p class="mdetails">Are You Taking any Medicines? : <span id="medicine"></span></p>
+      <p class="mdetails">Did you donate blood in previous 3 Months? : <span id="lastdonate"></span></p>
+      <p class="mdetails">Have you received any immunizations in the past month? : <span id="immu"></span></p>
+      <p class="mdetails">Have you been treated for Malaria in the past 3 months? : <span id="malaria"></span></p>
+      <p class="mdetails">Have you received blood in the past 6 months? : <span id="recieveblood"></span></p>
+      <p class="mdetails">Have you had close contact with someone diagnosed with hepatitis or yellow jaundice in the
+        past 6 months? : <span id="jaundice"></span></p>
+      <p class="mdetails">Have you been treated for Rabies or received Hepatitis B immune globulin in the past year? :
+        <span id="Rabies"></span></p>
+      <p class="mdetails">Have you ever been diagnosed with or currently suffer from any of the following conditions? 
+        <ul class="condition">
+          <li>Diabetes : <span id="Diabetes"></span> </li>
+          <li>Cancer : <span id="Cancer"></span> </li>
+          <li>Tuberculosis : <span id="Tuberculosis"></span> </li>
+          <li>Bronchial asthma : <span id="asthma"></span> </li>
+          <li>Liver disease : <span id="liver"></span> </li>
+          <li>kidney disease : <span id="kidney"></span> </li>
+          <li>Blood clotting problem or blood disease : <span id="clot"></span> </li>
+          <li>Heart disease or high blood pressure : <span id="Heart"></span> </li>
+          <li>Allergic disorder : <span id="Allergy"></span> </li>
+        </ul>
+    </div>
+  </div>
+  <div class="form">
+    <form method="post">
+      <div class="inpt"
+        style="display: flex;flex-direction: row;align-items: flex-start;/* align-content: flex-start; */gap: 10px;">
+        <input required="" type="checkbox" id="concent" name="concent" style="margin-top: 6px;cursor: pointer;">
+        <label for="concent">I certify that the information provided is accurate and consent to its publication on the
+          website for the purpose of facilitating blood donation</label>
+      </div>
+    </form>
+    <button style="color: white;" class="n" onclick="window.location.href = 'thank.html'">Register</button>
+
+    
+  </div>
+  </div>
